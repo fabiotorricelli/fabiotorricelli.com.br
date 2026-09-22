@@ -19,3 +19,18 @@
 .care-image .care-body{padding:22px 24px 24px}
 .care-image .num{display:inline-block;margin-bottom:8px}
 @media(max-width:700px){.care-image>img{height:200px}}
+
+/* VERSÃO FINAL — áreas compactas */
+.areas-intro{max-width:760px;margin:-6px auto 28px;text-align:center;color:var(--muted)}
+.areas-final{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.care-compact{padding:0;overflow:hidden;display:grid;grid-template-columns:112px 1fr;min-height:190px;align-items:stretch}
+.care-compact>img{width:112px;height:100%;min-height:190px;object-fit:cover;border-radius:18px 0 0 18px}
+.care-compact .care-body{padding:20px 18px;display:flex;flex-direction:column}
+.care-compact h3{font-size:1.15rem;margin:0 0 10px}
+.care-compact p{font-size:.94rem;line-height:1.45;margin:0 0 14px}
+.care-compact strong{margin-top:auto}
+.care-compact.no-image{display:block}
+.care-compact.no-image .care-body{min-height:190px}
+.urology-values{margin-top:30px;padding-top:22px;border-top:1px solid #d9e4ef;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;font-size:.9rem;color:var(--navy)}
+@media(max-width:900px){.areas-final{grid-template-columns:repeat(2,1fr)}.urology-values{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.areas-final{grid-template-columns:1fr}.care-compact{grid-template-columns:100px 1fr}.care-compact>img{width:100px}.urology-values{grid-template-columns:1fr}}
