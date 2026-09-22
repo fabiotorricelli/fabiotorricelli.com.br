@@ -10,7 +10,7 @@
 </div></div></section>
 <section class="section"><div class="container">
 <h2>Artigos indexados</h2>
-<p class="section-lead">A relação abaixo é carregada diretamente do PubMed para permanecer atualizada. Cada artigo apresenta referência bibliográfica, acesso ao registro original e um resumo de 3–4 linhas quando o abstract está disponível no PubMed.</p>
+<p class="section-lead">Artigos científicos indexados, organizados do mais recente para o mais antigo. Cada registro traz uma síntese breve e acesso ao PubMed para leitura completa.</p>
 <div class="pub-tools"><input id="pubSearch" type="search" placeholder="Buscar por título, periódico ou ano…" aria-label="Buscar publicações"><span id="pubCount"></span></div>
 <div id="pubStatus" class="pub-status">Carregando publicações indexadas…</div>
 <div id="pubAll" class="pub-list"></div>
@@ -24,7 +24,15 @@ function esc(s){return (s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>
 function textOf(node){return node?node.textContent.trim():'';}
 function render(list){
  const box=document.getElementById('pubAll'); document.getElementById('pubCount').textContent=list.length+' artigos';
- box.innerHTML=list.map(r=>`<article class="pub-full"><div class="pub-year">${esc(r.year)}</div><div><h3>${esc(r.title)}</h3><p class="pub-meta">${esc(r.journal)}${r.doi?' · DOI '+esc(r.doi):''}</p><p class="pub-summary">${esc(r.abstract||'Resumo não disponível no registro PubMed. Consulte o artigo original para detalhes do estudo.')}</p><a href="https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/" target="_blank" rel="noopener">Ver no PubMed ↗</a></div></article>`).join('');
+ box.innerHTML=list.map(r=>`<article class="pub-row">
+   <div class="pub-year">${esc(r.year)}</div>
+   <div class="pub-body">
+     <h3>${esc(r.title)}</h3>
+     <p class="pub-meta">${esc(r.journal)}</p>
+     <p class="pub-summary">${esc(r.abstract||'Consulte o registro no PubMed para resumo e detalhes do artigo.')}</p>
+     <a class="pubmed-link" href="https://pubmed.ncbi.nlm.nih.gov/${r.pmid}/" target="_blank" rel="noopener">PubMed →</a>
+   </div>
+ </article>`).join('');
 }
 async function loadPubs(){
  try{
